@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Orbit Arcade — your browser-based game hub.">
+  <title>Orbit Arcade — Game Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/ui.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#overview" aria-label="Orbit Arcade home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="brand-copy"><strong>ORBIT</strong><small>ARCADE HUB</small></span>
+      </a>
+
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="primary-nav">
+        <a class="nav-link active" href="#overview" data-section="overview"><span class="nav-icon">◫</span><span>Overview</span></a>
+        <a class="nav-link" href="#character" data-section="character"><span class="nav-icon">◉</span><span>Character</span><span class="nav-count">EDIT</span></a>
+        <a class="nav-link" href="#profile" data-section="profile"><span class="nav-icon">◎</span><span>My profile</span></a>
+        <a class="nav-link" href="#settings" data-section="settings"><span class="nav-icon">⚙</span><span>Settings</span></a>
+      </nav>
+
+      <div class="sidebar-label explore-label">EXPLORE</div>
+      <div class="locked-nav-item"><span class="nav-icon">◇</span><span>Lobby</span><span class="lock-tag">PHASE 2</span></div>
+      <div class="locked-nav-item"><span class="nav-icon">♜</span><span>Casino</span><span class="lock-tag">PHASE 3</span></div>
+      <div class="locked-nav-item"><span class="nav-icon">▦</span><span>Arcade</span><span class="lock-tag">PHASE 4</span></div>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-status"><span class="status-dot"></span><span>LOCAL PROFILE ACTIVE</span></div>
+      <div class="sidebar-player">
+        <div class="mini-avatar" id="sidebarAvatar" aria-hidden="true"><span>O</span></div>
+        <div class="sidebar-player-copy"><strong id="sidebarPlayerName">Player</strong><small id="sidebarPlayerId">ID: —</small></div>
+        <button class="icon-button sidebar-more" type="button" data-go="profile" aria-label="Open profile">···</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="breadcrumb"><span>YOUR SPACE</span><span class="breadcrumb-divider">/</span><strong id="pageTitle">Overview</strong></div>
+        <div class="topbar-actions">
+          <div class="connection-pill"><span class="status-dot"></span>LOCAL MODE</div>
+          <div class="balance-pill" aria-label="Virtual credit balance"><span class="coin-icon">¢</span><span class="balance-copy"><small>YOUR BALANCE</small><strong id="topBalance">1,000</strong></span></div>
+          <button class="profile-button" type="button" data-go="profile" aria-label="Open your profile"><span class="profile-initial" id="topInitial">P</span><span class="profile-button-name" id="topPlayerName">Player</span><span class="chevron">⌄</span></button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page-section active" id="section-overview" aria-labelledby="welcomeTitle">
+          <div class="welcome-row">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span> YOUR GAME UNIVERSE</div>
+              <h1 id="welcomeTitle">Ready when<br><span>you are.</span></h1>
+              <p class="welcome-copy">Your space. Your character. Your next high score.<br>Everything starts here.</p>
+              <div class="welcome-actions">
+                <button class="button button-primary" type="button" data-go="character">Customize character <span>↗</span></button>
+                <button class="button button-quiet" type="button" data-go="profile">View profile</button>
+              </div>
+            </div>
+            <div class="hero-art-card">
+              <div class="hero-glow"></div>
+              <div class="hero-card-top"><span class="live-tag"><i></i> YOUR AVATAR</span><span class="hero-card-index">01 / 01</span></div>
+              <canvas id="heroCharacterCanvas" width="460" height="430" aria-label="Preview of your customizable character"></canvas>
+              <div class="hero-card-bottom"><div><small>CURRENT PLAYER</small><strong id="heroPlayerName">Player</strong></div><span class="hero-level">LVL <b>01</b></span></div>
+              <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+            </div>
+          </div>
+
+          <div class="section-heading"><div><div class="eyebrow">YOUR DASHBOARD</div><h2>At a glance</h2></div><span class="section-note">SAVED ON THIS DEVICE</span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">VIRTUAL BALANCE</span><span class="stat-icon violet">¢</span></div><strong class="stat-value" id="statBalance">1,000</strong><span class="stat-foot">Ready to play when games launch</span></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">GAMES PLAYED</span><span class="stat-icon blue">▣</span></div><strong class="stat-value" id="statGames">0</strong><span class="stat-foot">Your arcade journey starts here</span></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">WINS</span><span class="stat-icon green">↗</span></div><strong class="stat-value" id="statWins">0</strong><span class="stat-foot">Your victories will show here</span></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">PLAYER SINCE</span><span class="stat-icon orange">◷</span></div><strong class="stat-value stat-date" id="statSince">Today</strong><span class="stat-foot">Your profile stays on this browser</span></article>
+          </div>
+
+          <div class="section-heading explore-heading"><div><div class="eyebrow">PICK YOUR PLAYGROUND</div><h2>Worlds to explore</h2></div><span class="section-note">ROADMAP</span></div>
+          <div class="world-grid">
+            <article class="world-card world-lobby">
+              <div class="world-art lobby-art"><div class="planet planet-a"></div><div class="planet planet-b"></div><div class="platform"></div><span class="art-spark spark-a">✦</span><span class="art-spark spark-b">✧</span></div>
+              <div class="world-card-content"><div class="world-meta"><span class="world-kicker">SOCIAL SPACE</span><span class="phase-chip">PHASE 2</span></div><h3>The Lobby</h3><p>Meet up, customize your crew, and connect with friends.</p><span class="world-status"><i></i> IN DEVELOPMENT</span></div>
+            </article>
+            <article class="world-card world-casino">
+              <div class="world-art casino-art"><div class="neon-sign">LUCK<br><b>LAB</b></div><div class="casino-machine machine-a"></div><div class="casino-machine machine-b"></div><span class="art-spark spark-c">✦</span></div>
+              <div class="world-card-content"><div class="world-meta"><span class="world-kicker">VIRTUAL CREDITS</span><span class="phase-chip">PHASE 3</span></div><h3>Neon Casino</h3><p>Try your luck with fictional credits in arcade-style games.</p><span class="world-status"><i></i> IN DEVELOPMENT</span></div>
+            </article>
+            <article class="world-card world-arcade">
+              <div class="world-art arcade-art"><div class="arcade-cabinet cab-a"><i></i><b></b></div><div class="arcade-cabinet cab-b"><i></i><b></b></div><div class="arcade-floor"></div><span class="arcade-star">★</span></div>
+              <div class="world-card-content"><div class="world-meta"><span class="world-kicker">HIGH SCORE HUNT</span><span class="phase-chip">PHASE 4</span></div><h3>Retro Arcade</h3><p>Classic-inspired mini-games, solo challenges, and versus play.</p><span class="world-status"><i></i> IN DEVELOPMENT</span></div>
+            </article>
+          </div>
+          <div class="phase-banner"><div class="phase-banner-icon">✦</div><div><strong>Phase 1 is ready.</strong><p>Your local player profile and character customization are live. More worlds will unlock as development progresses.</p></div><span class="phase-progress">01 <i></i> 06</span></div>
+        </section>
+
+        <section class="page-section" id="section-character" aria-labelledby="characterTitle" hidden>
+          <div class="page-intro"><div class="eyebrow"><span class="eyebrow-line"></span> MAKE IT YOURS</div><h1 id="characterTitle">Your character.<br><span>Your rules.</span></h1><p>Build a look that feels like you. Changes are saved automatically on this device.</p></div>
+          <div class="customizer-layout">
+            <div class="character-preview-panel">
+              <div class="panel-topline"><span>LIVE PREVIEW</span><span class="preview-live"><i></i> AUTO-SAVED</span></div>
+              <div class="preview-stage"><div class="preview-ring"></div><div class="preview-grid"></div><canvas id="customCharacterCanvas" width="500" height="560" aria-label="Live character preview"></canvas><div class="preview-nameplate"><span class="nameplate-dot"></span><strong id="previewPlayerName">Player</strong><small>PLAYER AVATAR</small></div></div>
+              <div class="preview-footer"><span>ROTATION</span><div class="rotation-hint">Preview adjusts to your selected style</div><span class="preview-level">LVL 01</span></div>
+            </div>
+            <div class="customizer-controls">
+              <div class="control-panel">
+                <div class="control-heading"><div><span class="control-step">01 / IDENTITY</span><h2>Avatar name</h2></div><span class="control-symbol">✎</span></div>
+                <label class="field-label" for="characterName">DISPLAY NAME</label>
+                <div class="input-with-count"><input id="characterName" type="text" maxlength="16" minlength="3" autocomplete="nickname" placeholder="Enter a player name"><span id="nameCount">0 / 16</span></div>
+                <p class="field-help">3–16 characters. This name appears above your character in future multiplayer spaces.</p>
+                <p class="field-error" id="nameError" role="alert" hidden></p>
+              </div>
+              <div class="control-panel">
+                <div class="control-heading"><div><span class="control-step">02 / LOOK</span><h2>Character style</h2></div><span class="control-symbol">◈</span></div>
+                <div class="style-options" role="group" aria-label="Character style">
+                  <button class="style-option selected" type="button" data-style="runner" aria-pressed="true"><span class="style-icon style-runner">◉</span><strong>Runner</strong><small>Sporty</small></button>
+                  <button class="style-option" type="button" data-style="ranger" aria-pressed="false"><span class="style-icon style-ranger">⬟</span><strong>Ranger</strong><small>Explorer</small></button>
+                  <button class="style-option" type="button" data-style="pixel" aria-pressed="false"><span class="style-icon style-pixel">▦</span><strong>Pixel</strong><small>Retro</small></button>
+                </div>
+              </div>
+              <div class="control-panel color-panel">
+                <div class="control-heading"><div><span class="control-step">03 / COLORS</span><h2>Set your palette</h2></div><span class="control-symbol">◌</span></div>
+                <div class="color-control"><div><strong>Outfit</strong><small>Your main character color</small></div><div class="swatch-row" data-color-group="outfitColor" aria-label="Outfit color"><button class="swatch selected" type="button" data-color="#8B5CF6" style="--swatch:#8B5CF6" aria-label="Purple" aria-pressed="true"></button><button class="swatch" type="button" data-color="#22C3A6" style="--swatch:#22C3A6" aria-label="Mint" aria-pressed="false"></button><button class="swatch" type="button" data-color="#FF765E" style="--swatch:#FF765E" aria-label="Coral" aria-pressed="false"></button><button class="swatch" type="button" data-color="#F2B84B" style="--swatch:#F2B84B" aria-label="Gold" aria-pressed="false"></button><button class="swatch" type="button" data-color="#5596F5" style="--swatch:#5596F5" aria-label="Blue" aria-pressed="false"></button><button class="swatch" type="button" data-color="#E66FAE" style="--swatch:#E66FAE" aria-label="Pink" aria-pressed="false"></button></div></div>
+                <div class="color-control"><div><strong>Skin tone</strong><small>Choose your character's skin tone</small></div><div class="swatch-row" data-color-group="skinColor" aria-label="Skin tone"><button class="swatch selected" type="button" data-color="#F1C5A5" style="--swatch:#F1C5A5" aria-label="Light" aria-pressed="true"></button><button class="swatch" type="button" data-color="#D99A72" style="--swatch:#D99A72" aria-label="Medium light" aria-pressed="false"></button><button class="swatch" type="button" data-color="#AC704F" style="--swatch:#AC704F" aria-label="Medium dark" aria-pressed="false"></button><button class="swatch" type="button" data-color="#704633" style="--swatch:#704633" aria-label="Dark" aria-pressed="false"></button><button class="swatch" type="button" data-color="#E7B98B" style="--swatch:#E7B98B" aria-label="Warm" aria-pressed="false"></button></div></div>
+                <div class="color-control"><div><strong>Hair</strong><small>Pick a hair color</small></div><div class="swatch-row" data-color-group="hairColor" aria-label="Hair color"><button class="swatch selected" type="button" data-color="#30243D" style="--swatch:#30243D" aria-label="Dark brown" aria-pressed="true"></button><button class="swatch" type="button" data-color="#6A422D" style="--swatch:#6A422D" aria-label="Brown" aria-pressed="false"></button><button class="swatch" type="button" data-color="#E9B64B" style="--swatch:#E9B64B" aria-label="Blonde" aria-pressed="false"></button><button class="swatch" type="button" data-color="#D96F58" style="--swatch:#D96F58" aria-label="Ginger" aria-pressed="false"></button><button class="swatch" type="button" data-color="#A8B8D8" style="--swatch:#A8B8D8" aria-label="Silver" aria-pressed="false"></button><button class="swatch" type="button" data-color="#4B78D1" style="--swatch:#4B78D1" aria-label="Blue" aria-pressed="false"></button></div></div>
+                <div class="color-control"><div><strong>Accent</strong><small>Small details and accessories</small></div><div class="swatch-row" data-color-group="accentColor" aria-label="Accent color"><button class="swatch selected" type="button" data-color="#F8D36B" style="--swatch:#F8D36B" aria-label="Yellow" aria-pressed="true"></button><button class="swatch" type="button" data-color="#F7F7FB" style="--swatch:#F7F7FB" aria-label="White" aria-pressed="false"></button><button class="swatch" type="button" data-color="#FF765E" style="--swatch:#FF765E" aria-label="Coral" aria-pressed="false"></button><button class="swatch" type="button" data-color="#65D9C2" style="--swatch:#65D9C2" aria-label="Mint" aria-pressed="false"></button><button class="swatch" type="button" data-color="#77A9FF" style="--swatch:#77A9FF" aria-label="Sky blue" aria-pressed="false"></button></div></div>
+              </div>
+              <div class="customizer-actions"><button class="button button-secondary" id="resetCharacter" type="button">Reset appearance</button><span class="save-indicator"><i></i> All changes saved</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page-section" id="section-profile" aria-labelledby="profileTitle" hidden>
+          <div class="page-intro compact-intro"><div class="eyebrow"><span class="eyebrow-line"></span> PLAYER ACCOUNT</div><h1 id="profileTitle">Your profile<span>.</span></h1><p>Your local player identity and progress, all in one place.</p></div>
+          <div class="profile-layout">
+            <article class="profile-hero-card"><div class="profile-hero-glow"></div><div class="profile-avatar-wrap"><canvas id="profileCharacterCanvas" width="240" height="260" aria-label="Your character"></canvas></div><div class="profile-hero-info"><span class="live-tag"><i></i> PLAYER PROFILE</span><h2 id="profileDisplayName">Player</h2><span class="profile-id" id="profileId">PLAYER ID · —</span></div><div class="profile-hero-balance"><small>VIRTUAL BALANCE</small><strong><span>¢</span> <b id="profileBalance">1,000</b></strong></div></article>
+            <div class="profile-detail-grid"><article class="detail-card"><span class="detail-label">ACCOUNT CREATED</span><strong id="profileCreated">—</strong><small>On this browser</small></article><article class="detail-card"><span class="detail-label">GAMES PLAYED</span><strong id="profileGames">0</strong><small>Total local game sessions</small></article><article class="detail-card"><span class="detail-label">WINS</span><strong id="profileWins">0</strong><small>Recorded victories</small></article><article class="detail-card"><span class="detail-label">LOSSES</span><strong id="profileLosses">0</strong><small>Recorded defeats</small></article></div>
+            <article class="profile-edit-card"><div class="section-heading inside-heading"><div><div class="eyebrow">PLAYER IDENTITY</div><h2>Update your name</h2></div></div><label class="field-label" for="profileNameInput">PLAYER NAME</label><div class="profile-name-row"><input id="profileNameInput" type="text" maxlength="16" minlength="3" autocomplete="nickname"><button class="button button-primary" id="saveProfileName" type="button">Save name</button></div><p class="field-help">Use 3–16 characters. Your unique player ID stays the same.</p><p class="field-error" id="profileNameError" role="alert" hidden></p></article>
+            <article class="local-data-notice"><div class="notice-icon">ⓘ</div><div><strong>This is a device-specific profile</strong><p>Your profile is stored in this browser's LocalStorage. It is not a secure global account, cannot automatically sync between devices, and can be cleared with browser data. Do not store sensitive information here. A secure shared account system would require a trusted backend.</p></div></article>
+          </div>
+        </section>
+
+        <section class="page-section" id="section-settings" aria-labelledby="settingsTitle" hidden>
+          <div class="page-intro compact-intro"><div class="eyebrow"><span class="eyebrow-line"></span> PREFERENCES</div><h1 id="settingsTitle">Your settings<span>.</span></h1><p>Small details that make your game hub feel right.</p></div>
+          <div class="settings-panel">
+            <div class="settings-group"><div class="settings-group-heading"><span class="settings-icon">♫</span><div><h2>Audio</h2><p>Control sound preferences for future games.</p></div></div><label class="setting-row" for="soundToggle"><span><strong>Sound effects</strong><small>Enable game and interface sounds when available.</small></span><input class="toggle-input" id="soundToggle" type="checkbox"><span class="toggle-ui" aria-hidden="true"></span></label></div>
+            <div class="settings-group"><div class="settings-group-heading"><span class="settings-icon">✧</span><div><h2>Visual effects</h2><p>Choose how much motion you want to see.</p></div></div><label class="setting-row" for="motionToggle"><span><strong>Reduced motion</strong><small>Reduce decorative movement and transitions.</small></span><input class="toggle-input" id="motionToggle" type="checkbox"><span class="toggle-ui" aria-hidden="true"></span></label></div>
+            <div class="settings-group"><div class="settings-group-heading"><span class="settings-icon">▧</span><div><h2>Screen effects</h2><p>Set visual feedback preferences for gameplay.</p></div></div><label class="setting-row" for="shakeToggle"><span><strong>Screen shake</strong><small>Allow screen shake in supported games.</small></span><input class="toggle-input" id="shakeToggle" type="checkbox"><span class="toggle-ui" aria-hidden="true"></span></label></div>
+            <div class="settings-danger"><div><strong>Reset local player data</strong><p>Delete this browser's player profile and start again with 1,000 virtual credits.</p></div><button class="button button-danger" id="resetAccount" type="button">Reset profile</button></div>
+            <div class="settings-save-note"><i></i> Preferences are saved automatically on this device.</div>
+          </div>
+        </section>
+
+        <footer class="app-footer"><span>ORBIT ARCADE <b>•</b> PHASE 1 BUILD</span><span>MADE FOR THE BROWSER <b>✦</b></span></footer>
+      </div>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <noscript><div class="noscript-notice">Orbit Arcade needs JavaScript enabled to save your profile and run the character preview.</div></noscript>
+</body>
+</html>
